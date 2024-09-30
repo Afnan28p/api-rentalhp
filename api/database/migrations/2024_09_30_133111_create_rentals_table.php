@@ -15,13 +15,11 @@ return new class extends Migration
             $table->uuid('id');
             $table->primary('id');
             $table->string('name', 50);
-            $table->unsignedBigInteger('user_id');
             $table->uuid('device_id');
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
             $table->double('total_harga');
             $table->string('status', 50);
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('device_id')->references('id')->on('devices')->onDelete('cascade');
             $table->timestamps();
             // $table->foreign('fakultas_id')->references('id')->on('fakultas');

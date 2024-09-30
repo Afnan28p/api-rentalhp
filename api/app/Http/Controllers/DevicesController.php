@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\devices;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class DevicesController extends Controller
 {
@@ -32,11 +33,11 @@ class DevicesController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'nama' => 'required',
+            'nama' => 'required|unique:devices',
             'merek_device' => 'required',
             'tipe_device'=> 'required',
-            'harga_sewa_per_hari'=> 'required|numeric',
-            'stock'=> 'required|numeric',
+            'harga_sewa_per_hari'=> 'required',
+            'stock'=> 'required',
             'status'=> 'required',
         ]);
 
@@ -68,7 +69,7 @@ class DevicesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, devices $devices)
+    public function update(Request $request,$id)
     {
         $validate = $request->validate([
             'nama' => 'required',
@@ -91,7 +92,7 @@ class DevicesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(devices $devices)
+    public function destroy($id)
     {
         $devices = devices::find($id);
         if($devices){

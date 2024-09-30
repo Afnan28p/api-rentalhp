@@ -13,7 +13,6 @@ class rentals extends Model
 
     protected $fillable = [
         'name',
-        'user_id',
         'device_id',
         'tanggal_mulai',
         'tanggal_selesai',
