@@ -12,10 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rentals', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
+            $table->primary('id');
             $table->string('name', 50);
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('device_id');
+            $table->uuid('device_id');
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
             $table->double('total_harga');
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('device_id')->references('id')->on('devices')->onDelete('cascade');
             $table->timestamps();
+            // $table->foreign('fakultas_id')->references('id')->on('fakultas');
         });
     }
 
