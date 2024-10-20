@@ -23,6 +23,6 @@ Route::post('login', [App\Http\Controllers\AuthController::class, 'login']);
     Route::post('/rentals', [App\Http\Controllers\RentalsController::class, 'store'])->name('rentals.store');
     Route::patch('/rentals/{id}', [App\Http\Controllers\RentalsController::class, 'update'])->name('rentals.update');
     Route::delete('/rentals/{id}', [App\Http\Controllers\RentalsController::class, 'destroy'])->name('rentals.destroy');
-});
+// });
 
 
