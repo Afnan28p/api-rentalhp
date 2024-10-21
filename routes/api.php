@@ -14,7 +14,7 @@ Route::post('login', [App\Http\Controllers\AuthController::class, 'login']);
 //     })->middleware('auth:sanctum');
 
     Route::get('/devices/{id}', [App\Http\Controllers\DevicesController::class, 'show'])->name('devices.show');
-
+    Route::get('/rentals/{id}', [App\Http\Controllers\RentalsController::class, 'show'])->name('rentals.show');
 
     Route::get('/devices', [App\Http\Controllers\DevicesController::class, 'index'])->name('devices.index');
     Route::post('/devices', [App\Http\Controllers\DevicesController::class, 'store'])->name('devices.store');
