@@ -87,7 +87,7 @@ class RentalsController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $request->validate([
-            'name' => 'required|max:50|unique:rentals,name',
+            'name' => 'required|max:50',
             'device_id' => 'required|exists:devices,id',
             'tanggal_mulai' => 'required|date',
             'tanggal_selesai' => 'required|date|after_or_equal:tanggal_mulai',
