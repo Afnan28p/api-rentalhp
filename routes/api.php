@@ -13,6 +13,8 @@ Route::post('login', [App\Http\Controllers\AuthController::class, 'login']);
 //         return $request->user();
 //     })->middleware('auth:sanctum');
 
+    Route::get('/devices/{id}', [DevicesController]::class, 'show']);
+
 
     Route::get('/devices', [App\Http\Controllers\DevicesController::class, 'index'])->name('devices.index');
     Route::post('/devices', [App\Http\Controllers\DevicesController::class, 'store'])->name('devices.store');
