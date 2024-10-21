@@ -55,7 +55,17 @@ class RentalsController extends Controller
      */
     public function show(rentals $rentals)
     {
-        //
+        $rental = rentals::with('devices')->find($rental);
+        if ($prodi) {
+            $data['success'] = true;
+            $data['message'] = "Data rental berhasil ditemukan";
+            $data['result'] = $prodi;
+            return response()->json($data, Response::HTTP_OK);
+        } else {
+            $data['success'] = false;
+            $data['message'] = "Data rental tidak ditemukan";
+            return response()->json($data, Response::HTTP_NOT_FOUND);
+        }
     }
 
     /**
