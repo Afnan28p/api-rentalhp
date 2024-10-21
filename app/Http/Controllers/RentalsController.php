@@ -53,20 +53,25 @@ class RentalsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(rentals $rentals)
+   public function show($id)
     {
-        $rental = rentals::with('devices')->find($rentals);
-        if ($rentals) {
+        // Mengambil data rental dengan relasi 'devices' berdasarkan id yang diberikan
+        $rental = rentals::with('devices')->find($id);
+        
+        if ($rental) {
+            // Jika data rental ditemukan
             $data['success'] = true;
             $data['message'] = "Data rental berhasil ditemukan";
-            $data['result'] = $rentals;
+            $data['result'] = $rental; // Return data rental yang ditemukan
             return response()->json($data, Response::HTTP_OK);
         } else {
+            // Jika data rental tidak ditemukan
             $data['success'] = false;
             $data['message'] = "Data rental tidak ditemukan";
             return response()->json($data, Response::HTTP_NOT_FOUND);
-        }
+        }
     }
+
 
     /**
      * Show the form for editing the specified resource.
