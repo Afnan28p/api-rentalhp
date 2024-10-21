@@ -57,7 +57,7 @@ class DevicesController extends Controller
     {
         $devices = devices::find($devices);
         $data['success'] = true;
-        $data['message'] = "Detail data fakultas";
+        $data['message'] = "Detail data Devices";
         $data['result'] = $devices;
         return response()->json($data, Response::HTTP_OK);
 
