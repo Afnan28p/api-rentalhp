@@ -53,10 +53,25 @@ class RentalsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(rentals $rentals)
+   public function show($id)
     {
-        //
+        // Mengambil data rental dengan relasi 'devices' berdasarkan id yang diberikan
+        $rental = rentals::with('devices')->find($id);
+        
+        if ($rental) {
+            // Jika data rental ditemukan
+            $data['success'] = true;
+            $data['message'] = "Data rental berhasil ditemukan";
+            $data['result'] = $rental; // Return data rental yang ditemukan
+            return response()->json($data, Response::HTTP_OK);
+        } else {
+            // Jika data rental tidak ditemukan
+            $data['success'] = false;
+            $data['message'] = "Data rental tidak ditemukan";
+            return response()->json($data, Response::HTTP_NOT_FOUND);
+        }
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -72,7 +87,7 @@ class RentalsController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $request->validate([
-            'name' => 'required|max:50|unique:rentals,name',
+            'name' => 'required|max:50',
             'device_id' => 'required|exists:devices,id',
             'tanggal_mulai' => 'required|date',
             'tanggal_selesai' => 'required|date|after_or_equal:tanggal_mulai',
