@@ -8,10 +8,10 @@ Route::post('register', [App\Http\Controllers\AuthController::class, 'register']
 Route::post('login', [App\Http\Controllers\AuthController::class, 'login']);
 
 
-// Route::middleware('auth:sanctum')->group(function () {
-//     Route::get('/user', function (Request $request) {
-//         return $request->user();
-//     })->middleware('auth:sanctum');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    })->middleware('auth:sanctum');
 
     Route::get('/devices/{id}', [App\Http\Controllers\DevicesController::class, 'show'])->name('devices.show');
     Route::get('/rentals/{id}', [App\Http\Controllers\RentalsController::class, 'show'])->name('rentals.show');
@@ -25,6 +25,6 @@ Route::post('login', [App\Http\Controllers\AuthController::class, 'login']);
     Route::post('/rentals', [App\Http\Controllers\RentalsController::class, 'store'])->name('rentals.store');
     Route::patch('/rentals/{id}', [App\Http\Controllers\RentalsController::class, 'update'])->name('rentals.update');
     Route::delete('/rentals/{id}', [App\Http\Controllers\RentalsController::class, 'destroy'])->name('rentals.destroy');
-// });
+});
 
 
