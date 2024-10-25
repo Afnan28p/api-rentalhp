@@ -2,10 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DevicesController;
+use App\Http\Controllers\RentalsController;
 
-
-Route::post('register', [App\Http\Controllers\AuthController::class, 'register']);
-Route::post('login', [App\Http\Controllers\AuthController::class, 'login']);
+Route::post('register', [App\Http\Controllers\RegisterController::class, 'register']);
+Route::post('login', [App\Http\Controllers\RegisterController::class, 'login']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
